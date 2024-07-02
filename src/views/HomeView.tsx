@@ -1,4 +1,5 @@
 'use client';
+import { useQueryGetUser } from '@/api/authApi';
 import { useMutationDelivering, useMutationGetAllOrder } from '@/api/shipperApi';
 import { Button } from 'antd';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function HomeView() {
+  const { data: listUser } = useQueryGetUser();
   const { mutate: listOrder } = useMutationGetAllOrder();
   const [listDataOrder, setListDataOrder] = useState<any>([]);
   const { mutate: delivering } = useMutationDelivering();
@@ -24,7 +26,7 @@ export default function HomeView() {
 
   const handleConfirmOrder = (orderId: any) => {
     delivering(
-      { _id: orderId },
+      { _id: orderId, shipper_id: listUser?._id },
       {
         onSuccess: (data: any) => {
           toast.success('Nhận hàng thành công');

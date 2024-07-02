@@ -6,9 +6,9 @@ const orderApi = {
     const url = '/order/list-order-by-status';
     return apiClient.post(url, statusOrder);
   },
-  delivering(orderId: any) {
+  delivering(params: any) {
     const url = `/order/delivering`;
-    return apiClient.post(url, orderId);
+    return apiClient.post(url, params);
   },
   changeDelivery(orderId: any) {
     const url = 'order/change-delivery';
@@ -29,7 +29,7 @@ export const useMutationGetAllOrder = () => {
 };
 
 export const useMutationDelivering = () => {
-  return useMutation((orderId: any) => orderApi.delivering(orderId));
+  return useMutation((params: any) => orderApi.delivering(params));
 };
 
 export const useMutationChangeDelivery = () => {
