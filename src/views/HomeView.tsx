@@ -6,13 +6,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { PoweroffOutlined } from '@ant-design/icons';
 
 export default function HomeView() {
-  const { data: listUser } = useQueryGetUser();
+  const { data } = useQueryGetUser();
   const { mutate: listOrder } = useMutationGetAllOrder();
   const [listDataOrder, setListDataOrder] = useState<any>([]);
   const { mutate: delivering } = useMutationDelivering();
   const router = useRouter();
+  const listUser = data as any;
   useEffect(() => {
     listOrder(
       { status: 'waiting-delivery' },
@@ -36,9 +38,17 @@ export default function HomeView() {
     );
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('authToken-shipper');
+    router.push('/login');
+  };
+
   return (
-    <div>
-      <div className='text-center'>
+    <div className='w-full'>
+      <button onClick={handleLogout} className='flex justify-end w-full'>
+        <PoweroffOutlined style={{ fontSize: '24px' }} />
+      </button>
+      <div className='mt-[30px] text-center'>
         <h1 className='text-xl font-bold'>Danh sách đơn hàng</h1>
       </div>
       {listDataOrder?.map((item: any, index: any) => (
