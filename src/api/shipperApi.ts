@@ -37,7 +37,7 @@ export const useMutationChangeDelivery = () => {
 };
 
 export const useQueryGetOrder = (orderId: any) => {
-  return useQuery(['get-order'], () => orderApi.getOrder(orderId));
+  return useQuery(['get-order', orderId], () => orderApi.getOrder(orderId), { enabled: !!orderId });
 };
 
 export const useMutationOnDelivered = () => {

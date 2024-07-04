@@ -2,7 +2,7 @@
 import { Button, Card } from 'antd';
 import React from 'react';
 import { PhoneOutlined, MessageOutlined } from '@ant-design/icons';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useMutationOnDelivered, useQueryGetOrder } from '@/api/shipperApi';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
@@ -12,6 +12,7 @@ export default function OrderDetailView() {
   const { data } = useQueryGetOrder(params.orderId);
   const { mutate: delivered } = useMutationOnDelivered();
   const dataOrder = data as any;
+  const router = useRouter();
 
   const handleDelivered = (orderId: any) => {
     delivered(
@@ -19,6 +20,7 @@ export default function OrderDetailView() {
       {
         onSuccess: (data) => {
           toast.success('Giao hàng thành công');
+          router.push('/');
         },
       },
     );
@@ -52,10 +54,6 @@ export default function OrderDetailView() {
           <div className='flex justify-between mt-1'>
             <div>Phí giao hàng</div>
             <div className='font-semibold'>₫{dataOrder?.ship_code}</div>
-          </div>
-          <div className='flex justify-between mt-1'>
-            <div>Tiền COD cần ứng</div>
-            <div className='font-semibold'>₫200,000</div>
           </div>
         </div>
       </Card>
