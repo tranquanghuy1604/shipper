@@ -1,11 +1,8 @@
 'use client';
-import { Button, Card } from 'antd';
-import React from 'react';
-import { PhoneOutlined, MessageOutlined } from '@ant-design/icons';
-import { useParams, useRouter } from 'next/navigation';
 import { useMutationOnDelivered, useQueryGetOrder } from '@/api/shipperApi';
+import { Button, Card } from 'antd';
+import { useParams, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
 
 export default function OrderDetailView() {
   const params = useParams();
@@ -28,7 +25,6 @@ export default function OrderDetailView() {
 
   return (
     <div className='p-4'>
-      <Link href='/'>Back</Link>
       <Card className='mb-4'>
         <div className='flex justify-between items-center'>
           <div>

@@ -22,6 +22,9 @@ export default function LoginForm() {
           localStorage.setItem('authToken-shipper', data?.token);
           router.push('/');
         },
+        onError: () => {
+          toast.error('Đăng nhập thất bại');
+        },
       },
     );
 

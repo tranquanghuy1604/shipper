@@ -70,7 +70,7 @@ export default function HomeView() {
               <div className='flex justify-end gap-[10px] items-center mb-4'>
                 <span>Thu hộ:</span>
                 <span className='text-green-500 font-semibold'>
-                  đ{Number(item.total_price).toLocaleString('en-US')}
+                  đ{item?.payment_method === 'offline' ? Number(item.total_price).toLocaleString('en-US') : 0}
                 </span>
               </div>
             </div>
@@ -97,7 +97,11 @@ export default function HomeView() {
             </div>
           </div>
           <div className='text-center'>
-            <Button type='primary' onClick={() => handleConfirmOrder(item._id)}>
+            <Button
+              disabled={item?.status !== 'waiting-delivery'}
+              type='primary'
+              onClick={() => handleConfirmOrder(item._id)}
+            >
               Xác nhận đơn
             </Button>
           </div>
