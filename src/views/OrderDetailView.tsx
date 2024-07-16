@@ -31,7 +31,7 @@ export default function OrderDetailView() {
             <div className=''>
               Khách hàng: <span className='font-semibold text-[20px]'>{dataOrder?.customer?.fullname}</span>
             </div>
-            <div className='text-gray-500 mt-[10px]'>Địa chỉ: Thành Thái, Phường 14, Quận 10, Hồ Chí Minh</div>
+            <div className='text-gray-500 mt-[10px]'>Địa chỉ: {dataOrder?.customer?.address}</div>
             <div className='text-gray-500 mt-[10px]'>Lấy hàng trước 17:25</div>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function OrderDetailView() {
           </div>
           <div className='flex justify-between mt-1'>
             <div>Phí giao hàng</div>
-            <div className='font-semibold'>₫{dataOrder?.ship_code}</div>
+            <div className='font-semibold'>₫{Number(dataOrder?.ship_code).toLocaleString('en-US')}</div>
           </div>
         </div>
       </Card>

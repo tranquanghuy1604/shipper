@@ -44,7 +44,7 @@ export default function HomeView() {
   };
 
   return (
-    <div className='w-full'>
+    <div className='w-full pb-[50px]'>
       <button onClick={handleLogout} className='flex justify-end w-full'>
         <PoweroffOutlined style={{ fontSize: '24px' }} />
       </button>
@@ -76,22 +76,22 @@ export default function HomeView() {
             </div>
           </div>
           <div className='bg-white p-[10px] rounded-lg max-w-md mx-auto'>
-            <div className='relative items-center grid grid-cols-6 w-full gap-[10px]'>
+            <div className='relative items-center grid grid-cols-6 w-full'>
               <div className='col-span-1 grid grid-rows-6 h-full'>
                 <div className='row-start-2 row-end-3 w-[20px] h-[20px] bg-orange-500 rounded-[10000px]'></div>
                 <div className='row-start-4 row-end-5 w-[20px] h-[20px] bg-white border-[1px] border-gray-400 rounded-[10000px] mt-1.5'></div>
               </div>
-              <div className='absolute h-[46px] w-[2px] bg-gray-400 top-[50px] left-[8px]'></div>
+              <div className='absolute h-[38px] w-[2px] bg-gray-400 top-[46px] left-[8px]'></div>
               <div className='grid grid-rows-6 col-start-2 col-end-7 h-full max-h-[250px]'>
                 <div className='h-full max-h-[30px] row-start-1 row-end-2'>
                   <h2 className='font-semibold'>Táo đỏ</h2>
                 </div>
                 <div className='h-full max-h-[30px] row-start-2 row-end-3'>
-                  <p className='font-semibold'>175 Tây Sơn, Hà Nội</p>
+                  <p className='font-semibold text-[14px]'>175 Tây Sơn, Hà Nội</p>
                 </div>
 
                 <div className='h-full max-h-[30px] row-start-4 row-end-5'>
-                  <p>số 6 hoàng thế thiện, Phường Đằng Hải, Quận Hải An, Hải Phòng</p>
+                  <p className='text-[14px]'>{item?.customer?.address}</p>
                 </div>
               </div>
             </div>
